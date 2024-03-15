@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Card, Title, Paragraph } from 'react-native-paper';
+import { Card, Title, Paragraph, Button } from 'react-native-paper';
 
 interface BeerCardProps {
   product_name: string;
@@ -10,12 +10,13 @@ interface BeerCardProps {
 
 const BeerCard = ({ product_name, generic_name, image_url}: BeerCardProps) => {
   return (
-    <View className='flex p-2'>
-      <Card>
-        <Card.Cover source={{ uri: image_url }} className='object-contain w-full h-[250px]' />
-        <Card.Content className='p-2 mx-2'>
+    <View className='flex p-4'>
+      <Card className='bg-white'>
+        <Card.Cover source={{ uri: image_url }} resizeMode="contain" className='w-full h-[250px] flex-col flex-1 mx-auto bg-slate-50'/>
+        <Card.Content className='p-4'>
           <Title className='font-bold text-xl'>{product_name}</Title>
           <Paragraph>{generic_name}</Paragraph>
+          <Button mode='contained' className='mt-2' loading={true}>En savoir plus</Button>
         </Card.Content>
       </Card>
     </View>

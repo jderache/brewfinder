@@ -9,21 +9,23 @@ export default function BeersScreen() {
 
   return (
     <>
-          <Appbar.Header>
+          <Appbar.Header className="bg-white">
             <Appbar.Content title="BrewFinder 🍺" />
           </Appbar.Header>
-          <SafeAreaView>
-                {isError && !isLoading ? <Text>An error has occurred : {error.message}</Text> : null}
-                {isLoading && <Text>Loading...<ActivityIndicator animating={true} /></Text>}
-                {data && (
-                  <FlatList className="p-5"
-                    data={data}
-                    keyExtractor={(item) => item.product_name}
-                    renderItem={({ item }) => (
-                      <BeerCard {...item}/>
-                    )}
-                  />
+          <SafeAreaView className="flex-1">
+            <View className="flex-1">
+            {isError && !isLoading ? <Text>An error has occurred : {error.message}</Text> : null}
+            {isLoading && <Text>Loading...<ActivityIndicator animating={true} /></Text>}
+            {data && (
+              <FlatList className="p-5 flex-1"
+                data={data}
+                keyExtractor={(item) => item.product_name}
+                renderItem={({ item }) => (
+                  <BeerCard {...item}/>
                 )}
+              />
+            )}
+            </View>
           </SafeAreaView>
     </>
   );
