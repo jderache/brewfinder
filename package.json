@@ -20,7 +20,8 @@
     "react": "18.2.0",
     "react-native": "0.73.4",
     "react-native-paper": "^5.12.3",
-    "serpapi": "^2.1.0"
+    "serpapi": "^2.1.0",
+    "expo-updates": "~0.24.12"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
