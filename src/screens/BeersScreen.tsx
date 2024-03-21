@@ -6,17 +6,19 @@ import {useNavigation} from "@react-navigation/native";
 import React from "react";
 import {useState} from "react";
 
-function ListHeaderComponent({handleCategoryChange}: {handleCategoryChange: any}) {
+function ListHeaderComponent({handleCategoryChange, selectedCategory}: {handleCategoryChange: any; selectedCategory: string}) {
 	return (
-		<>
-			<View style={{flexDirection: "row", justifyContent: "space-around"}}>
-				<Button mode={"outlined"} onPress={() => handleCategoryChange("french%20beers")}>
-					🇫🇷
-				</Button>
-				<Button onPress={() => handleCategoryChange("german%20beers")}>🇩🇪</Button>
-				<Button onPress={() => handleCategoryChange("belgian%20beers")}>🇧🇪</Button>
-			</View>
-		</>
+		<View style={{flexDirection: "row", justifyContent: "space-around"}}>
+			<Button mode={selectedCategory === "french%20beers" ? "outlined" : "text"} onPress={() => handleCategoryChange("french%20beers")}>
+				🇫🇷
+			</Button>
+			<Button mode={selectedCategory === "german%20beers" ? "outlined" : "text"} onPress={() => handleCategoryChange("german%20beers")}>
+				🇩🇪
+			</Button>
+			<Button mode={selectedCategory === "belgian%20beers" ? "outlined" : "text"} onPress={() => handleCategoryChange("belgian%20beers")}>
+				🇧🇪
+			</Button>
+		</View>
 	);
 }
 
@@ -49,7 +51,7 @@ export default function BeersScreen() {
 					{data && (
 						<FlatList
 							className="p-4 flex-1"
-							ListHeaderComponent={() => <ListHeaderComponent handleCategoryChange={handleCategoryChange} />}
+							ListHeaderComponent={() => <ListHeaderComponent handleCategoryChange={handleCategoryChange} selectedCategory={selectedCategory} />}
 							data={dataArr as {product_name: string; generic_name: string; image_url: string; code: string; page: number}[]}
 							keyExtractor={(item, index) => item.code + index}
 							renderItem={({item}) => <BeerCard {...item} navigation={navigation} />}
