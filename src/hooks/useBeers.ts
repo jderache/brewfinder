@@ -19,7 +19,6 @@ async function fetchData(params: {categories_tags: string; page_size: number; pa
 	}
 
 	const data = await response.json();
-	console.log(data);
 	return data;
 }
 
