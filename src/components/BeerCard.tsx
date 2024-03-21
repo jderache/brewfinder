@@ -11,12 +11,23 @@ interface BeerCardProps {
 
 const BeerCard = ({navigation, product_name, generic_name, image_url, code}: BeerCardProps) => {
 	return (
-		<Card className="bg-white p-2 m-3" key={code}>
+		<Card className="bg-white p-2 m-3 flex-1" key={code + "1"}>
 			<Card.Cover source={{uri: image_url}} resizeMode="contain" className="w-full h-[300px] flex-col flex-1 mx-auto bg-slate-50" />
-			<Card.Content className="p-4">
+			<Card.Content className="p-4 relative">
 				<Title className="font-bold text-xl">{product_name}</Title>
 				<Paragraph>{generic_name}</Paragraph>
-				<Button mode="contained" className="mt-2" onPress={() => navigation.navigate(Routes.BEER_DETAILS_SCREEN, {code})}>
+				<Button
+					mode="contained"
+					className="mt-2"
+					onPress={() =>
+						navigation.navigate(Routes.BEER_DETAILS_SCREEN, {
+							product_name,
+							generic_name,
+							image_url,
+							code,
+						})
+					}
+				>
 					En savoir plus
 				</Button>
 			</Card.Content>

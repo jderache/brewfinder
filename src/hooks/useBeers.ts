@@ -19,6 +19,7 @@ async function fetchData(params: {categories_tags: string; page_size: number; pa
 	}
 
 	const data = await response.json();
+	console.log(data);
 	return data;
 }
 
@@ -29,7 +30,7 @@ export const useBeers = (params: {categories_tags: string; page_size: number; pa
 		initialPageParam: 1,
 		getNextPageParam: (lastPage, allPages) => {
 			if (lastPage.length === 0) {
-				return undefined; // No more pages to fetch
+				return undefined;
 			}
 			return allPages.length + 1;
 		},

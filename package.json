@@ -19,6 +19,7 @@
     "nativewind": "^2.0.11",
     "react": "18.2.0",
     "react-native": "0.73.4",
+    "react-native-country-flags": "^1.1.0",
     "react-native-paper": "^5.12.3",
     "serpapi": "^2.1.0"
   },
