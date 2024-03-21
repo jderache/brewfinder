@@ -7,9 +7,16 @@ interface BeerCardProps {
 	image_url: string;
 	code: string;
 	navigation: any;
+	url: string;
+	labels: string;
+	manufacturing_places: string;
+	ingredients_text_fr: string;
+	packaging: string;
+	product_name_fr: string;
+	quantity: string;
 }
 
-const BeerCard = ({navigation, product_name, generic_name, image_url, code}: BeerCardProps) => {
+const BeerCard = ({navigation, product_name, generic_name, image_url, code, url, labels, manufacturing_places, ingredients_text_fr, packaging, product_name_fr, quantity}: BeerCardProps) => {
 	return (
 		<Card className="bg-white p-2 m-3 flex-1" key={code + "1"}>
 			<Card.Cover source={{uri: image_url}} resizeMode="contain" className="w-full h-[300px] flex-col flex-1 mx-auto bg-slate-50" />
@@ -25,6 +32,13 @@ const BeerCard = ({navigation, product_name, generic_name, image_url, code}: Bee
 							generic_name,
 							image_url,
 							code,
+							url,
+							labels,
+							manufacturing_places,
+							ingredients_text_fr,
+							packaging,
+							product_name_fr,
+							quantity,
 						})
 					}
 				>

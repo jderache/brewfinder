@@ -10,9 +10,10 @@ function ListHeaderComponent({handleCategoryChange, selectedCategory, count}: {h
 	return (
 		<>
 			<View className="flex-col	 justify-center p-4">
-				<Text className="text-center font-bold text-xl">Select a category below</Text>
+				<Text className="text-center font-bold text-xl">Partez à la découverte de la bière avec BrewFinder !</Text>
+				<Text className="text-center text-xl mt-2">Choisissez un drapeau ci-dessous.</Text>
 				<Text className="text-center text-xl">
-					About {count} beers listed for {selectedCategory === "french%20beers" ? "🇫🇷" : selectedCategory === "german%20beers" ? "🇩🇪" : selectedCategory === "belgian%20beers" ? "🇧🇪" : "🍺"}
+					{count} bières listées pour {selectedCategory === "french%20beers" ? "🇫🇷" : selectedCategory === "german%20beers" ? "🇩🇪" : selectedCategory === "belgian%20beers" ? "🇧🇪" : "🍺"}
 				</Text>
 			</View>
 			<View style={{flexDirection: "row", justifyContent: "space-around"}}>
@@ -62,8 +63,9 @@ export default function BeersScreen() {
 							className="p-4 flex-1"
 							// @ts-ignore
 							ListHeaderComponent={() => <ListHeaderComponent handleCategoryChange={handleCategoryChange} selectedCategory={selectedCategory} count={data.pages[0].count} />}
-							data={dataArr as {product_name: string; generic_name: string; image_url: string; code: string; page: number}[]}
+							data={dataArr as {product_name: string; generic_name: string; image_url: string; code: string}[]}
 							keyExtractor={(item, index) => item.code + index}
+							// @ts-ignore
 							renderItem={({item}) => <BeerCard {...item} navigation={navigation} />}
 							onEndReached={onReachEnd}
 							onEndReachedThreshold={0.9}
